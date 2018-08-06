@@ -1,0 +1,15 @@
+<div class="game-wrap">
+  <h1>Let's play a game!</h1>
+  <div class="letters-wrap">
+    <% @letters.each do |letter| %>
+    <p class="letters"><%= letter %></p>
+      <% end %>
+  </div>
+  <h1>What's the longest word you can make with these letters?</h1>
+  <form action="/games/score" method="post">
+    <input type="hidden" name="letters" value="<%= @letters.join %>">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="text" name="answer">
+    <input type="submit">
+  </form>
+</div>
